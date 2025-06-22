@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Cairo-ExtraLight-BF643384ef1b106.ttf</string>
+		<string>Cairo-VariableFont_slntwght-BF643384ef6bbca.ttf</string>
+		<string>GE_SS_Unique_Bold_5.otf</string>
+		<string>GE_SS_Unique_Light_1.otf</string>
+		<string>18728-arabicmodern-bold.otf</string>
+		<string>Gotham Bold.otf</string>
+	</array>
+</dict>
+</plist>

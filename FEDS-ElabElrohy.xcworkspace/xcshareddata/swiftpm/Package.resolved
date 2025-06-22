@@ -1,0 +1,51 @@
+{
+  "originHash" : "122bfba88d60a4af93b66c7898cf1ed8e30517931dd719683eacd3530ef92717",
+  "pins" : [
+    {
+      "identity" : "axistabview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jasudev/AxisTabView.git",
+      "state" : {
+        "revision" : "5677e874634a2ccf890a1a5ed9258b4d5d9a3d7a",
+        "version" : "0.5.1"
+      }
+    },
+    {
+      "identity" : "axistooltip",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jasudev/AxisTooltip.git",
+      "state" : {
+        "revision" : "ed9f7acbbd54dc3ab70585c0cd006974b532e998",
+        "version" : "0.5.0"
+      }
+    },
+    {
+      "identity" : "countrypicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SURYAKANTSHARMA/CountryPicker.git",
+      "state" : {
+        "revision" : "0a9d0dda4e89e0640e7492ee604c5819d9435b1e",
+        "version" : "3.0.0"
+      }
+    },
+    {
+      "identity" : "qrcode",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dmrschmidt/QRCode",
+      "state" : {
+        "revision" : "a23c2d2b77483c5ce20ffaf4e68fef2d1a0bbca9",
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "richtext",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/NuPlay/RichText.git",
+      "state" : {
+        "revision" : "8abbc59142523ac18f36fcf07414c2f85a2e75ae",
+        "version" : "2.4.1"
+      }
+    }
+  ],
+  "version" : 3
+}
