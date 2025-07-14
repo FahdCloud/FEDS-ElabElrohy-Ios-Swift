@@ -42,10 +42,7 @@ struct HomePageView: View {
                                     .frame(width: 150, height: 150, alignment: .center)
                                     .onTapGesture {
                                         if top.route == "subjects" {
-                                            if ((self.genralVm.havePermissionToView && self.userTypeToken == self.genralVm.constants.USER_TYPE_TOKEN_STUDENT )
-                                                || userTypeToken == self.genralVm.constants.USER_TYPE_TOKEN_FAMILY) {
                                                 clearStatesWithAction(valueState: &isPresentSubjects)
-                                            }
                                         } else if top.route == "schudelTime" {
                                             UserDefaultss().removeObject(forKey: "groupToken")
                                             clearStatesWithAction(valueState: &isPresentHomeSchedule)

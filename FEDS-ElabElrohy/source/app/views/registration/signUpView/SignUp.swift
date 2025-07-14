@@ -87,26 +87,46 @@ struct SignUp: View {
     var signUpForm: some View {
         VStack(spacing: -10) {
             usernameField
-            studentPhoneNum
-            fatherPhoneNum
-            motherPhoneNum
+            if AppConstantStatus.isPhoneRequired {
+                studentPhoneNum
+            }
+            if AppConstantStatus.isParentsRequired {
+                fatherPhoneNum
+                motherPhoneNum
+            }
+            
             if AppConstantStatus.isEducationSystem {
                 eduSystemField
             }
             
-            if !signUpViewModel.showMenuAcadmicYears  {
-                AcadmicYearDropdownIfFailed
-            }else{
-                AcadmicYearDropdown
+            if AppConstantStatus.isAcademicYeartRequired {
+            
+                if !signUpViewModel.showMenuAcadmicYears  {
+                       AcadmicYearDropdownIfFailed
+                   }else{
+                       AcadmicYearDropdown
+                   }
             }
             
-            if !signUpViewModel.showMenuGovrnorate {
-                governmentDropDownIfFailed
-            }else{
-                governmentDropDown
+        
+             if AppConstantStatus.isGovernmentRequired {
+                 if !signUpViewModel.showMenuGovrnorate {
+                     governmentDropDownIfFailed
+                 }else{
+                     governmentDropDown
+                 }
+                            
+             }
+            
+            
+         
+            if AppConstantStatus.isCityRequired {
+                cityNameField
             }
-            cityNameField
-            schoolNameField
+            if AppConstantStatus.isSchoolRequired {
+                schoolNameField
+            }
+            
             emailField
             passwordField
         }

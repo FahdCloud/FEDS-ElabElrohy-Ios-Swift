@@ -85,7 +85,7 @@ class SignUpViewModel : ObservableObject {
     }
     
     func checkValidation(signUpModel: SignUpRequestModel){
- 
+        
         let isValidClientName : Bool = Validation.IsValidContent(text: signupRequestModel.clientName ?? "")
         let isValidNameAr : Bool = Validation.IsValidNameAr(text: signupRequestModel.clientName ?? "")
         let isValidNameEn : Bool = Validation.IsValidNameEn(text: signupRequestModel.clientName ?? "")
@@ -110,8 +110,8 @@ class SignUpViewModel : ObservableObject {
         
         
         let isValidEmptyPassword = Validation.IsValidContent(text: signupRequestModel.userPassword ?? "")
-
-  
+        
+        
         // valid name
         if !isValidClientName {
             toast = Helper.showToast(style: .error, message: NSLocalizedString("error_name_empty", comment: ""))
@@ -131,19 +131,19 @@ class SignUpViewModel : ObservableObject {
             signupRequestModel.clientNameAr = signupRequestModel.clientName ?? ""
         }
         
-        if !isValidEmptyUserEmail && !isValidEmptyUserPhone {
-            toast = Helper.showToast(style: .error, message: NSLocalizedString("error_email_and_phone", comment: ""))
-            return
-        }
-        
-        
-        if isValidEmptyUserPhone {
-            if !isValidPhonenumber {
-                toast = Helper.showToast(style: .error, message: NSLocalizedString("error_student_phone", comment: ""))
+        if AppConstantStatus.isPhoneRequired {
+            if !isValidEmptyUserEmail && !isValidEmptyUserPhone {
+                toast = Helper.showToast(style: .error, message: NSLocalizedString("error_email_and_phone", comment: ""))
                 return
             }
+            
+            if isValidEmptyUserPhone {
+                if !isValidPhonenumber {
+                    toast = Helper.showToast(style: .error, message: NSLocalizedString("error_student_phone", comment: ""))
+                    return
+                }
+            }
         }
-        
       
         
         if isValidEmptyUserEmail {
@@ -152,67 +152,78 @@ class SignUpViewModel : ObservableObject {
                 return
             }
         }
+
+        if AppConstantStatus.isParentsRequired {
+            if !isValidEmptyFatherPhone && !isValidEmptyMotherPhone {
+                toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_mother_or_father_phone", comment: ""))
+                return
+            }
         
-        
-        if !isValidEmptyFatherPhone && !isValidEmptyMotherPhone {
-            toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_mother_or_father_phone", comment: ""))
-            return
+            if isValidEmptyFatherPhone{
+                if !isValidFatherPhonenumber {
+                    toast = Helper.showToast(style: .error, message: NSLocalizedString("error_father_phone", comment: ""))
+                    return
+                }
+            }
+            
+            if isValidEmptyMotherPhone{
+                if !isValidMotherPhonenumber  {
+                    toast = Helper.showToast(style: .error, message: NSLocalizedString("error_mother_phone", comment: ""))
+                    return
+                }
+            }
+            
         }
         
-        if isValidEmptyFatherPhone{
-            if !isValidFatherPhonenumber {
-                toast = Helper.showToast(style: .error, message: NSLocalizedString("error_father_phone", comment: ""))
+        if AppConstantStatus.isEducationSystem {
+            
+            if !isValidEmptyEducationSystemTypeToken  {
+                toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_educationSystem", comment: ""))
+                return
+            }
+            
+            
+            if selectedEduSystemTypeOption == genralVm.constants.EDUCATION_SYSTEM_TYPE_CENTER {
+                if !isValidEmptyPlaceToken{
+                    toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_center", comment: ""))
+                    return
+                }
+            }
+            
+        }
+        
+        
+        if AppConstantStatus.isAcademicYeartRequired {
+
+            if !isValidEmptyAcademicYearToken {
+                toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_academicYear", comment: ""))
                 return
             }
         }
         
-        if isValidEmptyMotherPhone{
-            if !isValidMotherPhonenumber  {
-                toast = Helper.showToast(style: .error, message: NSLocalizedString("error_mother_phone", comment: ""))
+        if AppConstantStatus.isGovernmentRequired {
+            
+            if !isValidEmptyGovermentToken {
+                toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_government", comment: ""))
+                return
+            }
+            
+        }
+        
+        if AppConstantStatus.isCityRequired {
+            
+            if !isValidEmptyCityName{
+                toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_city", comment: ""))
                 return
             }
         }
-        
-        
-        
-        if !isValidEmptyEducationSystemTypeToken  {
-            toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_educationSystem", comment: ""))
-            return
-        }
-        
-        
-        if selectedEduSystemTypeOption == genralVm.constants.EDUCATION_SYSTEM_TYPE_CENTER {
-            if !isValidEmptyPlaceToken{
-                toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_center", comment: ""))
+        if AppConstantStatus.isSchoolRequired {
+            
+            if !isValidEmptySchoolName  {
+                toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_school", comment: ""))
                 return
             }
         }
-        
-        
-        
-        
-        
-        if !isValidEmptyAcademicYearToken {
-            toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_academicYear", comment: ""))
-            return
-        }
-        
-        if !isValidEmptyGovermentToken {
-            toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_government", comment: ""))
-            return
-        }
-        
-        
-        if !isValidEmptyCityName{
-            toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_city", comment: ""))
-            return
-        }
-        
-        if !isValidEmptySchoolName  {
-            toast = Helper.showToast(style: .error, message: NSLocalizedString("empty_school", comment: ""))
-            return
-        }
-        
     
         
         if !isValidEmptyPassword {
